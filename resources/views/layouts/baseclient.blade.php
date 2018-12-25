@@ -23,7 +23,7 @@
               <ul class="list-unstyled">
                 <li><a href="#" class="text-white">Follow on Twitter</a></li>
                 <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
+                <li><a href="{{url('products')}}" class="text-white">Administración</a></li>
               </ul>
             </div>
           </div>
@@ -48,13 +48,17 @@
           <h1 class="jumbotron-heading">Hola!</h1>
           <p class="lead text-muted">Por favor elige una categoria, te esperamos...</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            <a href="#" class=" col-md-2 btn btn-primary my-2">Categorias</a>
+            <a href="#" class=" col-md-2 btn btn-secondary my-2">Marcas</a>
           </p>
         </div>
+
         </section>
         <div class="album py-5 bg-light">
+
         <div class="container">
+                  <h4>Ofertas y Promociones</h4>
+          <hr>
          @yield('content')
          </div>
          </div>

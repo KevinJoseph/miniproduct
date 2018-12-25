@@ -9,6 +9,15 @@ use App\Product;
 
 class ProductController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +25,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);;
+        //$products = Product::paginate(3);
+        $products = Product::paginate(10);
 
-        return view('home', compact('products'));
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -39,19 +49,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
         'name'=>'required',
         'description'=> 'required',
-        'price' => 'required'
+        'price' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
-        
-        $product = new Product([
-            'name' => $request->get('name'),
-            'description'=> $request->get('description'),
-            'price'=> $request->get('price')
-        ]);
+        /*IMAGE*/
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('upload'), $imageName);
+        /*end IMAGE*/
+        $product = new Product();
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->price = $request->get('price');
+        $product->path_image = $imageName;
         $product->save();
-        return redirect('/products')->with('success', 'El producto se agrego correctamente.');
+        
+        return redirect('products')->with('success', 'El producto se agrego correctamente.');
     }
 
     /**
@@ -92,14 +108,22 @@ class ProductController extends Controller
         'name'=>'required',
         'description'=> 'required',
         'price' => 'required'
+        //'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
+
+        /*IMAGE*/
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('upload'), $imageName);
+        /*end IMAGE*/
 
          $product = Product::find($id);
          $product->name = $request->get('name');
          $product->description = $request->get('description');
          $product->price = $request->get('price');
+         $product->path_image = $imageName;
          $product->save();         
         return redirect('/products')->with('success', 'Se actualizo los datos correctamente.');
+        
     }
 
     /**
