@@ -5,41 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
-use App\Product;
+use App\Promotion;
 use App\Category;
-class ProductController extends Controller
+class PromotionController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function loadcategory(){
-      
-         $categories = DB::table('categories')->select('categories.id', 'categories.name')->get();
-        
-         return response()->json(['categories' => $categories]);
-    }
-
     public function index()
     {
-        //$products = Product::paginate(3);
-
-        $products = DB::table('products')
-                ->join('categories','products.id_category','=','categories.id')
-                ->select('products.*','categories.name AS category')
+        $promotions = DB::table('promotions')
+                ->join('categories','promotions.id_category','=','categories.id')
+                ->select('promotions.*','categories.name AS category')
                 ->get();
              
-        return view('products.index', compact('products'));
+        return view('promotions.index', compact('promotions'));
     }
 
     /**
@@ -49,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('promotions.create');
     }
 
     /**
@@ -60,7 +42,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
         'name'=>'required',
         'description'=> 'required',
@@ -75,15 +56,15 @@ class ProductController extends Controller
         $category = Category::find($request->get('category'));
 
 
-        $product = new Product();
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->price = $request->get('price');
-        $product->id_category =$category->id;
-        $product->path_image = $imageName;
-        $product->save();
+        $promotion = new Promotion();
+        $promotion->name = $request->get('name');
+        $promotion->description = $request->get('description');
+        $promotion->price = $request->get('price');
+        $promotion->id_category =$category->id;
+        $promotion->path_image = $imageName;
+        $promotion->save();
         
-        return redirect('products')->with('success', 'El producto se agrego correctamente.');
+        return redirect('promotions')->with('success', 'Se agrego la promoción correctamente.');
     }
 
     /**
@@ -105,10 +86,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $promotion = Promotion::find($id);
         //encuentra la categoria_name, la envia como object
-        $category = Category::find($product->id_category);
-        return view('products.edit',['product' => $product,'category' => $category]);
+        $category = Category::find($promotion->id_category);
+        return view('promotions.edit',['promotion' => $promotion,'category' => $category]);
     }
 
     /**
@@ -126,23 +107,23 @@ class ProductController extends Controller
         'price' => 'required'
         //'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
-         $product = Product::find($id);
-         $product->name = $request->get('name');
-         $product->description = $request->get('description');
-         $product->price = $request->get('price');
-         $product->id_category = $request->get('category');
+
+         $promotion = Promotion::find($id);
+         $promotion->name = $request->get('name');
+         $promotion->description = $request->get('description');
+         $promotion->price = $request->get('price');
+         $promotion->id_category = $request->get('category');
 
          if(request()->image != null){
             /*IMAGE*/
              $imageName = time().'.'.request()->image->getClientOriginalExtension();
              request()->image->move(public_path('upload'), $imageName);
             /*end IMAGE*/
-            $product->path_image = $imageName;
+            $promotion->path_image = $imageName;
          }
 
-        $product->save();         
-        return redirect('/products')->with('success', 'Se actualizo los datos correctamente.');
-        
+        $promotion->save();         
+        return redirect('/promotions')->with('success', 'Se actualizo los datos correctamente.');
     }
 
     /**
@@ -153,10 +134,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $product->delete();
+        $promotion = Promotion::find($id);
+        $promotion->delete();
 
-        return redirect('/products')->with('success', 'Se elimino correctamente el producto.');
+        return redirect('/promotions')->with('success', 'Se elimino correctamente.');
     }
-
 }

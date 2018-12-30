@@ -4,9 +4,9 @@
 
 <div class="row">
   <div class="col-md-11">
-    <h2>Productos</h2>
+    <h2>Promociones y Ofertas</h2>
   </div>
-   <a href="{{url('products/create')}}" type="button" class="btn btn-success">Crear</a>
+   <a href="{{url('promotions/create')}}" type="button" class="btn btn-success">Crear</a>
 </div>
 
   @if(session()->get('success'))
@@ -26,16 +26,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($products as $product)
+        @foreach($promotions as $promotion)
         <tr>
-            <td>{{$product->id}}</td>
-            <td>{{$product->name}}</td>
-            <td>{{$product->description}}</td>
-            <td>{{$product->price}}</td>
-            <td>{{$product->category}}</td>
-            <td><a href="{{ route('products.edit',$product->id)}}" class="btn btn-primary">Editar</a></td>
+            <td>{{$promotion->id}}</td>
+            <td>{{$promotion->name}}</td>
+            <td>{{$promotion->description}}</td>
+            <td>{{$promotion->price}}</td>
+            <td>{{$promotion->category}}</td>
+            <td><a href="{{ route('promotions.edit',$promotion->id)}}" class="btn btn-primary">Editar</a></td>
             <td>
-                <form action="{{ route('products.destroy', $product->id)}}" method="post">
+                <form action="{{ route('promotions.destroy', $promotion->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
@@ -45,7 +45,4 @@
         @endforeach
     </tbody>
   </table>
-
-
-
 @endsection

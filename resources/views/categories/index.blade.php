@@ -4,9 +4,9 @@
 
 <div class="row">
   <div class="col-md-11">
-    <h2>Productos</h2>
+    <h2>Categorias</h2>
   </div>
-   <a href="{{url('products/create')}}" type="button" class="btn btn-success">Crear</a>
+   <a href="{{url('categories/create')}}" type="button" class="btn btn-success">Crear</a>
 </div>
 
   @if(session()->get('success'))
@@ -19,23 +19,17 @@
         <tr>
           <td style="font-weight: bold;">ID</td>
           <td style="font-weight: bold;">Nombre</td>
-          <td style="font-weight: bold;">Descripción</td>
-          <td style="font-weight: bold;">Precio</td>
-          <td style="font-weight: bold;">Categoria</td>
           <td style="font-weight: bold;" colspan="2">Acciones</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($products as $product)
+        @foreach($categories as $category)
         <tr>
-            <td>{{$product->id}}</td>
-            <td>{{$product->name}}</td>
-            <td>{{$product->description}}</td>
-            <td>{{$product->price}}</td>
-            <td>{{$product->category}}</td>
-            <td><a href="{{ route('products.edit',$product->id)}}" class="btn btn-primary">Editar</a></td>
+            <td>{{$category->id}}</td>
+            <td>{{$category->name}}</td>
+            <td><a href="{{ route('categories.edit',$category->id)}}" class="btn btn-primary">Editar</a></td>
             <td>
-                <form action="{{ route('products.destroy', $product->id)}}" method="post">
+                <form action="{{ route('categories.destroy', $category->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
@@ -46,6 +40,12 @@
     </tbody>
   </table>
 
+  <nav aria-label="Page navigation example">
+<div>
+<hr>
+{{$categories->links()}}  
+</div>
 
+</nav>
 
 @endsection

@@ -7,6 +7,7 @@
   <title>Productos</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -46,24 +47,19 @@
                   Productos
                 </a>
               </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{route('promotions.index')}}" style="font-weight: bold;">
+                  <span data-feather="bar-chart-2"></span>
+                  Promociones
+                </a>
+              </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight: bold;">
+                <a class="nav-link" href="{{url('categories')}}" style="font-weight: bold;">
                   <span data-feather="users"></span>
                   Categorias
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight: bold;">
-                  <span data-feather="bar-chart-2"></span>
-                  Marcas
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight: bold;">
-                  <span data-feather="layers"></span>
-                  Reportes
-                </a>
-              </li>
+  
             </ul>
 
           </div>

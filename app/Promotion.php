@@ -1,13 +1,15 @@
 <?php
 
 namespace App;
+
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 
-class Product extends Model
+
+class Promotion extends Model
 {
-    protected $fillable = [
+   protected $fillable = [
     'name',
     'description',
     'price',

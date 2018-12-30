@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use Illuminate\Support\Facades\DB;
+use App\Promotion;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -15,7 +17,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);
-        return view('inicio')->with(compact('products'));
+        $promotions = Promotion::paginate(3);
+
+        $categories = Category::All();
+
+        return view('inicio',['promotions' => $promotions, 'categories' => $categories]);
     }
+
+    public function categoryList(){
+        $categories = Category::All();
+        return $categories;
+    }
+
+    public function showPromotions($id){
+
+        $promotions = Promotion::where('id_category',$id)->paginate(6);
+        return view('show',['categories' => $this->categoryList(), 'promotions' => $promotions]);
+    }
+
 }

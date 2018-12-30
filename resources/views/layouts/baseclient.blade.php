@@ -7,6 +7,7 @@
   <title>Productos</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -31,7 +32,7 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="{{url('/')}}" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             <strong>Productos</strong>
           </a>
@@ -43,25 +44,8 @@
     </header>
  <main role="main">
        
-          <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hola!</h1>
-          <p class="lead text-muted">Por favor elige una categoria, te esperamos...</p>
-          <p>
-            <a href="#" class=" col-md-2 btn btn-primary my-2">Categorias</a>
-            <a href="#" class=" col-md-2 btn btn-secondary my-2">Marcas</a>
-          </p>
-        </div>
-
-        </section>
-        <div class="album py-5 bg-light">
-
-        <div class="container">
-                  <h4>Ofertas y Promociones</h4>
-          <hr>
          @yield('content')
-         </div>
-         </div>
+
  </main>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

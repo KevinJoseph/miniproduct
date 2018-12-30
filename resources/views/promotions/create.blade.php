@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Agregar Producto
+    Agregar Promoción y Oferta
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -20,7 +20,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('promotions.store') }}" enctype="multipart/form-data">
           <div class="form-group">
               @csrf
               <label for="name">Nombre:</label>
