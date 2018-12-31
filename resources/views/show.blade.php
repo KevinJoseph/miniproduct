@@ -4,14 +4,7 @@
 <div class="container">
 	
 <div class="row">
-  <div class="col-3">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categorias:</a>
-      @foreach ($categories as $category)
-      <a class="list-group-item list-group-item-action" href="{{url('show/'.$category->id)}}">{{$category->name}}</a>
-      @endforeach
-    </div>
-  </div>
+
   <div class="col-9">
          <div class="row">
          	@foreach($products as $product)

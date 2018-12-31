@@ -14,7 +14,7 @@
 Route::get('/','HomeController@index');
 
 Route::get('loadcategory','ProductController@loadcategory');
-Route::get('show/{id}', 'HomeController@showPromotions');
+Route::get('show/{id}', 'HomeController@showProducts');
 
 
 
