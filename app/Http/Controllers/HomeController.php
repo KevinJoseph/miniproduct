@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $promotions = Promotion::paginate(4);
+        $promotions = Promotion::All();
 
         $categories = Category::All();
 

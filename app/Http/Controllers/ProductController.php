@@ -94,7 +94,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::All();
+        $product = Product::find($id);
+    
+        return view('products.show',['categories' => $categories, 'product' => $product]);
+
     }
 
     /**

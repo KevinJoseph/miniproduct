@@ -75,7 +75,11 @@ class PromotionController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::All();
+        $promotion = Promotion::find($id);
+       
+        return view('promotions.show',['categories' => $categories, 'promotion' => $promotion]);
+
     }
 
     /**
