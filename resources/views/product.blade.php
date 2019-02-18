@@ -78,13 +78,12 @@
 
 							<ul class="product-links">
 								<li>Categoria:</li>
-								<li><a href="#">Headphones</a></li>
-								<li><a href="#">Accessories</a></li>
+								<li><a href="#">{{App\Category::find($product->id_category)->name}}</a></li>
 							</ul>
 
 							<ul class="product-links">
 								<li>Compartir:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://web.facebook.com/TOTALcomputersMarket/"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 								<li><a href="#"><i class="fa fa-envelope"></i></a></li>

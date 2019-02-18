@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Editar Categoria
+    Agregar Marca
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -20,14 +20,13 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('brands.update', $brand->id) }}" enctype="multipart/form-data">
-        @method('PATCH')
-        @csrf
-        <div class="form-group">
-          <label for="name">Nombre de la Marca:</label>
-          <input type="text" class="form-control" name="name" value='{{$brand->name}}'/>
-        </div>
-        <button type="submit" class="btn btn-primary">Actualizar datos</button>
+      <form method="post" action="{{ route('brands.store') }}">
+          <div class="form-group">
+              @csrf
+              <label for="name">Nombre de la Marca:</label>
+              <input type="text" class="form-control" name="name"/>
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar</button>
       </form>
   </div>
 </div>

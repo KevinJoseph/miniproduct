@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use App\Product;
 use App\Category;
+use App\Brand;
 class ProductController extends Controller
 {
         /**
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+              $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -28,6 +29,11 @@ class ProductController extends Controller
          $categories = DB::table('categories')->select('categories.id', 'categories.name')->get();
         
          return response()->json(['categories' => $categories]);
+    }
+
+    public function loadbrand(){
+        $brands = DB::table('brands')->select('brands.id', 'brands.name')->get();
+        return response()->json(['brands' => $brands]);
     }
 
     public function index()
@@ -60,7 +66,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
         'name'=>'required',
         'description'=> 'required',
@@ -70,16 +75,18 @@ class ProductController extends Controller
         /*IMAGE*/
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
         request()->image->move(public_path('upload'), $imageName);
+
         /*end IMAGE*/
 
         $category = Category::find($request->get('category'));
-
+        $brand = Brand::find($request->get('brand'));
 
         $product = new Product();
         $product->name = $request->get('name');
         $product->description = $request->get('description');
         $product->price = $request->get('price');
         $product->id_category =$category->id;
+        $product->id_brand = $brand->id;
         $product->path_image = $imageName;
         $product->save();
         
@@ -112,7 +119,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         //encuentra la categoria_name, la envia como object
         $category = Category::find($product->id_category);
-        return view('products.edit',['product' => $product,'category' => $category]);
+        $brand = Brand::find($product->id_brand);
+        return view('products.edit',['product' => $product,'category' => $category, 'brand' => $brand]);
     }
 
     /**
@@ -124,6 +132,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
          $request->validate([
         'name'=>'required',
         'description'=> 'required',
@@ -135,6 +144,7 @@ class ProductController extends Controller
          $product->description = $request->get('description');
          $product->price = $request->get('price');
          $product->id_category = $request->get('category');
+         $product->id_brand = $request->get('brand');
 
          if(request()->image != null){
             /*IMAGE*/

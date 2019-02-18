@@ -14,12 +14,14 @@
 Route::get('/','HomeController@index');
 
 Route::get('loadcategory','ProductController@loadcategory');
+Route::get('loadbrand','ProductController@loadbrand');
 Route::get('show/{id}', 'HomeController@showProducts');
-
-
+Route::get('product/{id}','HomeController@productEspecifid');
 
 Auth::routes();
 Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
 Route::resource('promotions', 'PromotionController');
+Route::resource('brands', 'BrandController');
+Route::resource('subcategories', 'SubCategoryController');
 Route::get('/home', 'HomeController@index')->name('home');

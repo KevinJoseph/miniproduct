@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Editar Categoria
+    Editar Marca
   </div>
   <div class="card-body">
     @if ($errors->any())

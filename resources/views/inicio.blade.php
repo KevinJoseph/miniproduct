@@ -16,14 +16,13 @@
               <h3 class="title">Ofertas y Promociones</h3>
               <div class="section-nav">
                 <ul class="section-tab-nav tab-nav">
-                  <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-                  <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-                  <li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-                  <li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+                  <li class="active"><a data-toggle="tab" href="#tab2">Solo por 3 días</a></li>
                 </ul>
               </div>
             </div>
           </div>
+
+
           <!-- /section title -->
 
           <!-- Products tab & slick -->
@@ -45,8 +44,8 @@
                         </div>
                       </div>
                       <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">{{$promotion->name}}</a></h3>
+                        <p class="product-category">{{App\Category::find($promotion->id_category)->name}}</p>
+                        <h3 class="product-name"><a href="{{route('promotions.show',$promotion->id)}}">{{$promotion->name}}</a></h3>
                         <p class="product-category"><p class="product-category">{{$promotion->description}}</p>
                         <h4 class="product-price">S/.{{$promotion->price}} <!--del class="product-old-price">$990.00</del--></h4>
                         <div class="product-rating">

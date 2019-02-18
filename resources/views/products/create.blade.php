@@ -41,6 +41,12 @@
               </select>
           </div>
           <div class="form-group">
+              <label>Marca:</label>
+              <select class="form-control" name="brand" id="brand">
+                <option selected>Seleccionar</option>
+              </select>
+          </div>
+          <div class="form-group">
               <label for="exampleFormControlFile1">Seleccionar Imagen:</label>
               <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
           </div>
@@ -56,6 +62,13 @@
         //console.log(data.regions.valueOf()); 
         $.each(data.categories, function(i, val) {
         $("#category").append('<option value="' + val.id + '">' + val.name + '</option>');
+               // console.log(val.id); 
+      }); // close each()
+    });
+      $.get("{{url('loadbrand')}}", function(data){ 
+        //console.log(data.regions.valueOf()); 
+        $.each(data.brands, function(i, val) {
+        $("#brand").append('<option value="' + val.id + '">' + val.name + '</option>');
                // console.log(val.id); 
       }); // close each()
     });

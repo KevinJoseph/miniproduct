@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Productos</title>
+  <title>TotalComputerMarket</title>
   <!--link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" /-->
   <!--link href="{{ asset('css/estilos.css') }}" rel="stylesheet" type="text/css" /-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,6 +27,7 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('css/style.css')}}"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 <body>
@@ -35,12 +36,14 @@
       <div id="top-header">
         <div class="container">
           <ul class="header-links pull-left">
-            <li><a href="#"><i class="fa fa-phone"></i> +51 999 999 999</a></li>
-            <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-            <li><a href="#"><i class="fa fa-map-marker"></i> Lima Lima Lima</a></li>
+            <li><a href="#"><i class="fa fa-whatsapp"></i>+51 917 910 646</a></li>
+            <li><a href="#"><i class="fa fa-envelope-o"></i>niruguza@gmail.com</a></li>
+            <li><a href="#"><i class="fa fa-map-marker"></i>Av. Garcilaso de la Vega 1358, Galería PLAZA TEC tienda 121</a></li>
+            <li><a href="https://web.facebook.com/TOTALcomputersMarket/"><i class="fa fa-facebook-f"></i>Facebook</a></li>
+
           </ul>
           <ul class="header-links pull-right">
-            <li><a href="#"><i class="fa fa-user-o"></i> Mi cuenta</a></li>
+            <li><a href="{{url('login')}}"><i class="fa fa-user-o"></i></a></li>
           </ul>
         </div>
       </div>
@@ -154,7 +157,6 @@
             @foreach ($categories as $category)
             <li><a href="{{url('show/'.$category->id)}}">{{$category->name}}</a></li>
             @endforeach
-
           </ul>
           <!-- /NAV -->
         </div>
@@ -212,19 +214,21 @@
           <div class="row">
             <div class="col-md-3 col-xs-6">
               <div class="footer">
-                <h3 class="footer-title">About Us</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                <h3 class="footer-title">Nosotros</h3>
+                <p style="text-align: justify;" >Total Computer Market es una empresa mayorista líder en tecnología.
+                </p>
                 <ul class="footer-links">
-                  <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                  <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                  <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                  <li><a href="#"><i class="fa fa-map-marker"></i>Av. Garcilaso de la Vega 1358, Galería PLAZA TEC tienda 121</a></li>
+                  <li><a href="#"><i class="fa fa-phone"></i>+51 917 910 646</a></li>
+                  <li><a href="#"><i class="fa fa-envelope-o"></i>niruguza@gmail.com</a></li>
+                  <li><a href="https://web.facebook.com/TOTALcomputersMarket/"><i class="fa fa-facebook-f"></i>Facebook</a></li>
                 </ul>
               </div>
             </div>
 
             <div class="col-md-3 col-xs-6">
               <div class="footer">
-                <h3 class="footer-title">Categories</h3>
+                <h3 class="footer-title">Categorias</h3>
                 <ul class="footer-links">
                   <li><a href="#">Hot deals</a></li>
                   <li><a href="#">Laptops</a></li>
@@ -241,24 +245,19 @@
               <div class="footer">
                 <h3 class="footer-title">Information</h3>
                 <ul class="footer-links">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Orders and Returns</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Instagram</a></li>
+                  <li><a href="#">Politica de Empresa</a></li>
+                  <li><a href="#">Ordenes de compra</a></li>
                 </ul>
               </div>
             </div>
 
             <div class="col-md-3 col-xs-6">
               <div class="footer">
-                <h3 class="footer-title">Service</h3>
+                <h3 class="footer-title">Servicios</h3>
                 <ul class="footer-links">
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">View Cart</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Track My Order</a></li>
-                  <li><a href="#">Help</a></li>
+                  <li><a href="{{url('login')}}">Administración</a></li>
                 </ul>
               </div>
             </div>
@@ -285,7 +284,7 @@
               </ul>
               <span class="copyright">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved TotalComputerMakert</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               </span>
             </div>
